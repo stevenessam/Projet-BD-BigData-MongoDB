@@ -2,7 +2,9 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
 import CRUDFiles.ClientCRUD;
+import CRUDFiles.TrottinettesCRUD;
 import DAO.Client;
+import DAO.Trottinettes;
 
 public class main {
 
@@ -17,7 +19,7 @@ public class main {
             // List collections
             // ConnectToDB.listCollections(database);
 
-            /*--------------------------------*/
+            /*---------------------------------Client--------------------------------------------------------------------------*/
             // Create a client with a specified _id
             /*
              * Client newClient = new Client(
@@ -43,11 +45,29 @@ public class main {
             /*--------------------------------*/
 
             // Appeler la fonction readClient avec l'ID du client que vous souhaitez lire
-            ClientCRUD.readClient(database, 1);
+            // ClientCRUD.readClient(database, 1);
 
             // ClientCRUD.deleteClient(database, 5);
-            /*-----------------------------------------------------------------------------------------------------------*/
+            /*-------------------------------------------Trottinettes----------------------------------------------------------------*/
 
+            // Créez un objet Trottinettes
+            // Trottinettes trottinettes = new Trottinettes(21, 80, true, -0.05, 0.05,
+            // "2024-01-30T10:00:00Z");
+
+            // Insérez l'objet Trottinettes dans la base de données
+            // TrottinettesCRUD.insertTrottinettes(database, trottinettes);
+            // Créez un objet Trottinettes avec les nouvelles valeurs
+            /*
+             * Trottinettes updatedTrottinettes = new Trottinettes(21, 90, false, 0.05,
+             * -0.05, "2024-01-30T12:00:00Z");
+             * 
+             * // Mettez à jour l'objet Trottinettes dans la base de données
+             * TrottinettesCRUD.updateTrottinettes(database, updatedTrottinettes);
+             */
+            // Supprimez l'objet Trottinettes de la base de données
+            // TrottinettesCRUD.deleteTrottinettes(database, 21);
+            // TrottinettesCRUD.readTrottinettes(database, 1);
+            /*-----------------------------------------------------------------------------------------------------------*/
             // Close the MongoDB connection
             mongoClient.close();
         }
