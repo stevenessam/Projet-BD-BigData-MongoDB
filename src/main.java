@@ -1,10 +1,16 @@
+import org.bson.Document;
+
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import CRUDFiles.ClientCRUD;
 import CRUDFiles.TrottinettesCRUD;
+import CRUDFiles.AvisCRUD;
+import DAO.Avis;
 import DAO.Client;
 import DAO.Trottinettes;
+import DAO.Avis;
 
 public class main {
 
@@ -67,7 +73,18 @@ public class main {
             // Supprimez l'objet Trottinettes de la base de données
             // TrottinettesCRUD.deleteTrottinettes(database, 21);
             // TrottinettesCRUD.readTrottinettes(database, 1);
-            /*-----------------------------------------------------------------------------------------------------------*/
+            /*--------------------------------------------------AVIS---------------------------------------------------------*/
+            // Insérer un nouvel avis
+            // AvisCRUD.insertAvis(database, 54, 1, 123, "Un nouveau commentaire sur la
+            // trottinette.");
+
+            // Mettre à jour un avis (par exemple, l'avis avec l'ID 1)
+            // AvisCRUD.updateAvis(database, 53, 2, 26, "Nouveau commentaire mis à jour
+            // wow.");
+            // AvisCRUD.deleteAvis(database, 50);
+            // AvisCRUD.readAvis(database, 1);
+            /*--------------------------------------------------Reservations---------------------------------------------------------*/
+
             // Close the MongoDB connection
             mongoClient.close();
         }
