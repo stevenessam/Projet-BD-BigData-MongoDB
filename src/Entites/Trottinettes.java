@@ -1,5 +1,9 @@
 package Entites;
 
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bson.Document;
 
 public class Trottinettes {
@@ -8,10 +12,10 @@ public class Trottinettes {
     private boolean disponibilite;
     private double longitude;
     private double latitude;
-    private String dernierCheck;
+    private Date dernierCheck;
 
     public Trottinettes(int id, int etatBatterie, boolean disponibilite, double longitude, double latitude,
-            String dernierCheck) {
+            Date dernierCheck) {
         this.id = id;
         this.etatBatterie = etatBatterie;
         this.disponibilite = disponibilite;
@@ -60,11 +64,11 @@ public class Trottinettes {
         this.latitude = latitude;
     }
 
-    public String getDernierCheck() {
+    public Date getDernierCheck() {
         return dernierCheck;
     }
 
-    public void setDernierCheck(String dernierCheck) {
+    public void setDernierCheck(Date dernierCheck) {
         this.dernierCheck = dernierCheck;
     }
 
@@ -76,5 +80,11 @@ public class Trottinettes {
                 .append("DernierCheck", dernierCheck);
     }
 
-    // Ajoutez des getters et des setters si nécessaire
+    // Méthode pour convertir une liste d'objets Trottinettes en une liste de
+    // documents MongoDB
+    public static List<Document> toDocumentList(List<Trottinettes> trottinettesList) {
+        return trottinettesList.stream()
+                .map(Trottinettes::toDocument)
+                .collect(Collectors.toList());
+    }
 }

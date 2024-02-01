@@ -61,7 +61,7 @@ public class main {
 
             // ClientCRUD.deleteClient(database, 5);
 
-            // ---------------------------------Fonction-MANY-------------------
+            // ---------------------------------Fonction-MANY--------------------------------------
             // Créer une liste d'objets Client à insérer
             /*
              * List<Client> clientsToInsert = Arrays.asList(
@@ -116,8 +116,8 @@ public class main {
             */
 
             // Créez un objet Trottinettes
-            // Trottinettes trottinettes = new Trottinettes(21, 80, true, -0.05, 0.05,
-            // "2024-01-30T10:00:00Z");
+            // Trottinettes trottinettes = new Trottinettes(55, 80, true, -0.05, 0.05,
+            // new Date(2024 - 1900, 0, 31, 14, 30));
 
             // Insérez l'objet Trottinettes dans la base de données
             // TrottinettesCRUD.insertTrottinettes(database, trottinettes);
@@ -132,6 +132,43 @@ public class main {
             // Supprimez l'objet Trottinettes de la base de données
             // TrottinettesCRUD.deleteTrottinettes(database, 21);
             // TrottinettesCRUD.readTrottinettes(database, 1);
+
+            // ---------------------------------Fonction-MANY---------------------------------------------
+
+            // Exemple d'insertion multiple de trottinettes
+            /*
+             * List<Trottinettes> trottinettesList = Arrays.asList(
+             * new Trottinettes(50, 80, true, -0.05, 0.05,
+             * new Date(2024 - 1900, 0, 31, 14, 30)),
+             * new Trottinettes(51, 80, true, -0.05, 0.05,
+             * new Date(2024 - 1900, 0, 31, 14, 30)));
+             * 
+             * TrottinettesCRUD.insertManyTrottinettes(database, trottinettesList);
+             */
+
+            // Exemple de lecture de toutes les trottinettes
+            // TrottinettesCRUD.readAllTrottinettes(database);
+
+            // Exemple d'objets Trottinettes pour la mise à jour multiple
+            // Exemple de liste de Trottinettes à mettre à jour
+            /*
+             * List<Trottinettes> trottinettesToUpdate = Arrays.asList(
+             * new Trottinettes(50, 100, false, 48.8566, 2.3522, new Date(2024 - 1900, 0,
+             * 31, 14, 30)),
+             * new Trottinettes(51, 100, true, 40.7128, -74.0060, new Date(2024 - 1900, 0,
+             * 31, 14, 30))
+             * // Ajoutez d'autres objets Trottinettes au besoin
+             * );
+             * 
+             * // Appel de la fonction d'update many
+             * TrottinettesCRUD.updateManyTrottinettes(database, trottinettesToUpdate);
+             */
+            // Exemple de liste d'IDs de Trottinettes à supprimer
+            /*
+             * List<Integer> trottinettesIdsToDelete = Arrays.asList(50, 51);
+             * // Appel de la fonction de suppression multiple
+             * TrottinettesCRUD.deleteManyTrottinettes(database, trottinettesIdsToDelete);
+             */
             /*--------------------------------------------------AVIS---------------------------------------------------------*/
             // Insérer un nouvel avis
             // AvisCRUD.insertAvis(database, 55, 1, 123, "Un nouveau commentaire sur la
@@ -182,17 +219,19 @@ public class main {
             /*--------------------------------------------------Reservations---------------------------------------------------------*/
             // Création d'un objet Reservation
 
-            Reservations reservation = new Reservations(
-                    56, // Remplacez par l'ID approprié
-                    10, // Exemple de ClientID
-                    10, // Exemple de TrottinetteID
-                    new Date(2024 - 1900, 0, 31, 14, 30), // 31 janvier 2024 à 14h30
-                    new Date(2024 - 1900, 0, 31, 16, 45),
-                    20.50 // Exemple de Tarif
-            );
-
-            // Insertion de la réservation dans la base de données
-            ReservationsCRUD.insertReservation(database, reservation);
+            /*
+             * Reservations reservation = new Reservations(
+             * 56, // Remplacez par l'ID approprié
+             * 10, // Exemple de ClientID
+             * 10, // Exemple de TrottinetteID
+             * new Date(2024 - 1900, 0, 31, 14, 30), // 31 janvier 2024 à 14h30
+             * new Date(2024 - 1900, 0, 31, 16, 45),
+             * 20.50 // Exemple de Tarif
+             * );
+             * 
+             * // Insertion de la réservation dans la base de données
+             * ReservationsCRUD.insertReservation(database, reservation);
+             */
 
             // Création d'un objet Reservation avec les nouvelles valeurs
             /*

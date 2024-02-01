@@ -11,7 +11,7 @@ public class Reservations {
     private int _id;
     private int clientID;
     private int trottinetteID;
-    private Date dateHeureDebut; // Correction ici
+    private Date dateHeureDebut;
     private Date dateHeureFin;
     private double tarif;
 

@@ -1,10 +1,14 @@
 package CRUDFiles;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 
 import Entites.Trottinettes;
+
+import java.util.List;
 
 import org.bson.Document;
 
@@ -105,4 +109,118 @@ public class TrottinettesCRUD {
             System.err.println("Error: " + e.getMessage());
         }
     }
+
+    // -----------------------------------------Fonction-MANY-------------------------------------------------------
+
+    // insert Many Trottinettes
+    public static void insertManyTrottinettes(MongoDatabase database, List<Trottinettes> trottinettesList) {
+        try {
+            // Obtenez la collection Trottinettes
+            MongoCollection<Document> collection = database.getCollection("Trottinettes");
+
+            // Convertissez la liste d'objets Trottinettes en une liste de documents MongoDB
+            List<Document> trottinettesDocuments = Trottinettes.toDocumentList(trottinettesList);
+
+            // Insérez les documents dans la collection
+            collection.insertMany(trottinettesDocuments);
+
+            System.out.println("Multiple trottinettes inserted successfully!");
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
+    // read All Trottinettes
+    public static void readAllTrottinettes(MongoDatabase database) {
+        try {
+            // Obtenez la collection Trottinettes
+            MongoCollection<Document> collection = database.getCollection("Trottinettes");
+
+            // Récupérez tous les documents de la collection
+            FindIterable<Document> result = collection.find();
+
+            // Affichez les détails de chaque trottinette
+            System.out.println("Liste des Trottinettes :");
+            for (Document trottinettesDoc : result) {
+                System.out.println("Trottinettes ID: " + trottinettesDoc.getInteger("_id"));
+                System.out.println("EtatBatterie: " + trottinettesDoc.getInteger("EtatBatterie"));
+                System.out.println("Disponibilite: " + trottinettesDoc.getBoolean("Disponibilite"));
+
+                Document localisationDoc = (Document) trottinettesDoc.get("Localisation");
+                if (localisationDoc != null) {
+                    System.out.println("Localisation: " +
+                            "longitude=" + localisationDoc.getDouble("longitude") +
+                            ", latitude=" + localisationDoc.getDouble("latitude"));
+                }
+
+                System.out.println("DernierCheck: " + trottinettesDoc.get("DernierCheck"));
+                System.out.println("------------------------");
+            }
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
+    // Mise à jour de plusieurs trottinettes
+    public static void updateManyTrottinettes(MongoDatabase database, List<Trottinettes> trottinettesList) {
+        try {
+            // Obtenez la collection Trottinettes
+            MongoCollection<Document> collection = database.getCollection("Trottinettes");
+
+            // Convertissez la liste d'objets Trottinettes en une liste de documents MongoDB
+            List<Document> trottinettesDocuments = Trottinettes.toDocumentList(trottinettesList);
+
+            // Parcourez la liste et mettez à jour chaque document dans la collection
+            for (Document trottinettesDocument : trottinettesDocuments) {
+                // Obtenez l'identifiant (_id) de l'objet Trottinettes
+                int trottinettesId = trottinettesDocument.getInteger("_id");
+
+                // Créez le filtre pour trouver le document correspondant à l'ID
+                Document filter = new Document("_id", trottinettesId);
+
+                // Effectuez la mise à jour du document
+                collection.replaceOne(filter, trottinettesDocument);
+            }
+
+            System.out.println("Multiple Trottinettes updated successfully");
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
+    // supprimer plusieurs trottinettes
+    public static void deleteManyTrottinettes(MongoDatabase database, List<Integer> trottinettesIds) {
+        try {
+            // Obtenez la collection Trottinettes
+            MongoCollection<Document> trottinettesCollection = database.getCollection("Trottinettes");
+
+            // Obtenez la collection Reservations
+            MongoCollection<Document> reservationsCollection = database.getCollection("Reservations");
+
+            // Obtenez la collection Avis
+            MongoCollection<Document> avisCollection = database.getCollection("Avis");
+
+            // Parcourez la liste des IDs des trottinettes à supprimer
+            for (int trottinettesId : trottinettesIds) {
+                // Supprimez l'objet Trottinettes de la collection Trottinettes
+                Document trottinettesFilter = new Document("_id", trottinettesId);
+                trottinettesCollection.deleteOne(trottinettesFilter);
+
+                // Supprimez les références dans la collection Reservations
+                Document reservationsFilter = new Document("TrottinetteID", trottinettesId);
+                reservationsCollection.deleteMany(reservationsFilter);
+
+                // Supprimez les références dans la collection Avis
+                Document avisFilter = new Document("TrottinetteID", trottinettesId);
+                avisCollection.deleteMany(avisFilter);
+
+                // ... Ajoutez d'autres collections si nécessaire
+            }
+
+            System.out.println("Multiple Trottinettes deleted successfully");
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
 }
