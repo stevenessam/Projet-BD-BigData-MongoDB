@@ -1,5 +1,9 @@
 package Entites;
 
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bson.Document;
 
 public class Transactions {
@@ -7,12 +11,11 @@ public class Transactions {
     private int transactionID;
     private int clientID;
     private double montant;
-    private String dateTransaction;
+    private Date dateTransaction;
     private String typeTransaction;
 
     // Constructeur
-    public Transactions(int transactionID, int clientID, double montant, String dateTransaction,
-            String typeTransaction) {
+    public Transactions(int transactionID, int clientID, double montant, Date dateTransaction, String typeTransaction) {
         this.transactionID = transactionID;
         this.clientID = clientID;
         this.montant = montant;
@@ -44,11 +47,11 @@ public class Transactions {
         this.montant = montant;
     }
 
-    public String getDateTransaction() {
+    public Date getDateTransaction() {
         return dateTransaction;
     }
 
-    public void setDateTransaction(String dateTransaction) {
+    public void setDateTransaction(Date dateTransaction) {
         this.dateTransaction = dateTransaction;
     }
 
@@ -67,5 +70,13 @@ public class Transactions {
                 .append("Montant", montant)
                 .append("DateTransaction", dateTransaction)
                 .append("TypeTransaction", typeTransaction);
+    }
+
+    // Méthode pour convertir une liste d'objets Transactions en une liste de
+    // documents MongoDB
+    public static List<Document> toDocumentList(List<Transactions> transactionsList) {
+        return transactionsList.stream()
+                .map(Transactions::toDocument)
+                .collect(Collectors.toList());
     }
 }

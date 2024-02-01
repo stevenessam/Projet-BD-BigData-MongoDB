@@ -261,16 +261,56 @@ public class main {
 
             /*--------------------------------------------------Transactions---------------------------------------------------------*/
             // Exemple d'insertion d'une transaction
-            // Transactions transaction = new Transactions(20, 14, 25.0,
-            // "2024-01-28T10:30:00", "Recharge de solde");
+            // Transactions transaction = new Transactions(50, 14, 25.0,
+            // new Date(2024 - 1900, 0, 31, 14, 30), "Recharge de solde");
             // TransactionsCRUD.insertTransaction(database, transaction);
             // Exemple de lecture d'une transaction par ID
             // TransactionsCRUD.readTransaction(database, 1);
             // Exemple de mise à jour d'une transaction par ID
-            // TransactionsCRUD.updateTransaction(database, 2, 44.0, new Date(), "Recharge
+            // TransactionsCRUD.updateTransaction(database, 50, 100, new Date(2024 - 1900,
+            // 0, 31, 14, 30), "Recharge
             // de solde");
             // Appel de la fonction de suppression
             // TransactionsCRUD.deleteTransaction(database, 20);
+            // --------------------------------------------------Fonction-MANY-------------------------------------
+            // Exemple de liste de transactions à insérer
+            /*
+             * List<Transactions> transactionsList = new ArrayList<>();
+             * transactionsList
+             * .add(new Transactions(55, 10, 50.0, new Date(2024 - 1900, 0, 31, 14, 30),
+             * "Recharge de solde"));
+             * transactionsList
+             * .add(new Transactions(56, 20, 30.0, new Date(2024 - 1900, 0, 31, 14, 30),
+             * "Recharge de solde"));
+             * 
+             * // Exemple d'appel pour insérer plusieurs transactions
+             * TransactionsCRUD.insertManyTransactions(database, transactionsList);
+             */
+            // Exemple d'appel pour lire toutes les transactions
+            // TransactionsCRUD.readAllTransactions(database);
+            // Exemple de liste de nouvelles transactions avec des valeurs mises à jour
+            /*
+             * List<Transactions> updatedTransactionsList = Arrays.asList(
+             * new Transactions(55, 10, 50.0, new Date(2024 - 1900, 0, 31, 14, 30),
+             * "Paiement de location"),
+             * new Transactions(56, 15, 30.0, new Date(2024 - 1900, 0, 31, 14, 30),
+             * "Paiement de location")
+             * // Ajoutez d'autres transactions mises à jour si nécessaire
+             * );
+             * 
+             * // Utilisez la fonction updateManyTransactions pour mettre à jour les
+             * // transactions
+             * TransactionsCRUD.updateManyTransactions(database, updatedTransactionsList);
+             */
+            // Exemple de liste d'IDs de transactions à supprimer
+            /*
+             * List<Integer> transactionsToDelete = Arrays.asList(55, 56);
+             * 
+             * // Utilisez la fonction deleteManyTransactions pour supprimer les
+             * transactions
+             * TransactionsCRUD.deleteManyTransactions(database, transactionsToDelete);
+             */
+
             /*--------------------------------------------------FIN CRUD---------------------------------------------------------*/
 
             mongoClient.close();
