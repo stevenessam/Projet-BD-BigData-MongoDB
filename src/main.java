@@ -5,10 +5,12 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import CRUDFiles.ClientCRUD;
+import CRUDFiles.ReservationsCRUD;
 import CRUDFiles.TrottinettesCRUD;
 import CRUDFiles.AvisCRUD;
 import DAO.Avis;
 import DAO.Client;
+import DAO.Reservations;
 import DAO.Trottinettes;
 import DAO.Avis;
 
@@ -84,8 +86,43 @@ public class main {
             // AvisCRUD.deleteAvis(database, 50);
             // AvisCRUD.readAvis(database, 1);
             /*--------------------------------------------------Reservations---------------------------------------------------------*/
+            // Création d'un objet Reservation
+            /*
+             * Reservations reservation = new Reservations(
+             * 11, // Remplacez par l'ID approprié
+             * 10, // Exemple de ClientID
+             * 10, // Exemple de TrottinetteID
+             * "2024-01-27T12:00:00", // Exemple de DateHeureDebut
+             * "2024-01-27T14:00:00", // Exemple de DateHeureFin
+             * 20.50 // Exemple de Tarif
+             * );
+             * 
+             * // Insertion de la réservation dans la base de données
+             * ReservationsCRUD.insertReservation(database, reservation);
+             */
 
+            // Création d'un objet Reservation avec les nouvelles valeurs
+            /*
+             * Reservations updatedReservation = new Reservations(
+             * 11, // ID de la réservation à mettre à jour
+             * 789, // Nouvelle valeur de ClientID
+             * 987, // Nouvelle valeur de TrottinetteID
+             * "2024-01-27T15:00:00", // Nouvelle valeur de DateHeureDebut
+             * "2024-01-27T17:00:00", // Nouvelle valeur de DateHeureFin
+             * 25.75 // Nouvelle valeur de Tarif
+             * );
+             * 
+             * // Mise à jour de la réservation dans la base de données
+             * ReservationsCRUD.updateReservation(database, updatedReservation);
+             */
+            // delete reservation
+            // ReservationsCRUD.deleteReservation(database, 11);
             // Close the MongoDB connection
+            // read
+            // ReservationsCRUD.readReservation(database, 2);
+
+            /*--------------------------------------------------Transactions---------------------------------------------------------*/
+
             mongoClient.close();
         }
     }
