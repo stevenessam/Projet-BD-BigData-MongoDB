@@ -1,3 +1,5 @@
+import java.util.Date;
+
 import org.bson.Document;
 
 import com.mongodb.MongoClient;
@@ -6,11 +8,13 @@ import com.mongodb.client.MongoDatabase;
 
 import CRUDFiles.ClientCRUD;
 import CRUDFiles.ReservationsCRUD;
+import CRUDFiles.TransactionsCRUD;
 import CRUDFiles.TrottinettesCRUD;
 import CRUDFiles.AvisCRUD;
 import DAO.Avis;
 import DAO.Client;
 import DAO.Reservations;
+import DAO.Transactions;
 import DAO.Trottinettes;
 import DAO.Avis;
 
@@ -122,6 +126,18 @@ public class main {
             // ReservationsCRUD.readReservation(database, 2);
 
             /*--------------------------------------------------Transactions---------------------------------------------------------*/
+            // Exemple d'insertion d'une transaction
+            // Transactions transaction = new Transactions(20, 14, 25.0,
+            // "2024-01-28T10:30:00", "Recharge de solde");
+            // TransactionsCRUD.insertTransaction(database, transaction);
+            // Exemple de lecture d'une transaction par ID
+            // TransactionsCRUD.readTransaction(database, 1);
+            // Exemple de mise à jour d'une transaction par ID
+            // TransactionsCRUD.updateTransaction(database, 2, 44.0, new Date(), "Recharge
+            // de solde");
+            // Appel de la fonction de suppression
+            // TransactionsCRUD.deleteTransaction(database, 20);
+            /*--------------------------------------------------FIN CRUD---------------------------------------------------------*/
 
             mongoClient.close();
         }
