@@ -3,6 +3,9 @@ package CRUDFiles;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import java.util.List;
+
 import org.bson.Document;
 
 public class AvisCRUD {
@@ -84,5 +87,59 @@ public class AvisCRUD {
         trottinettesCollection.updateMany(new Document("AvisID", avisId), miseAJourTrottinettes);
 
         System.out.println("Avis supprimé avec succès.");
+    }
+
+    // -----------------------------------------Fonction-MANY-------------------------------------------------------
+
+    // Méthode pour insérer plusieurs avis dans la collection Avis
+    public static void insertManyAvis(MongoDatabase database, List<Document> avisList) {
+        MongoCollection<Document> avisCollection = getAvisCollection(database);
+
+        // Insérer plusieurs documents dans la collection
+        avisCollection.insertMany(avisList);
+
+        System.out.println("Avis insérés avec succès.");
+    }
+
+    // Méthode pour mettre à jour plusieurs avis dans la collection Avis
+    public static void updateManyAvis(MongoDatabase database, List<Document> avisList) {
+        MongoCollection<Document> avisCollection = getAvisCollection(database);
+
+        for (Document avis : avisList) {
+            // Récupérer l'ID de l'avis à mettre à jour
+            int avisId = avis.getInteger("_id");
+
+            // Créer un filtre pour trouver l'avis à mettre à jour
+            Document filtre = new Document("_id", avisId);
+
+            // Créer un document de mise à jour avec tous les champs
+            Document miseAJour = new Document("$set", new Document()
+                    .append("ClientID", avis.getInteger("ClientID"))
+                    .append("TrottinetteID", avis.getInteger("TrottinetteID"))
+                    .append("MessageAvis", avis.getString("MessageAvis")));
+
+            // Effectuer la mise à jour
+            avisCollection.updateOne(filtre, miseAJour);
+        }
+
+        System.out.println("Avis mis à jour avec succès.");
+    }
+
+    // Méthode pour supprimer plusieurs avis dans la collection Avis
+    public static void deleteManyAvis(MongoDatabase database, List<Integer> avisIds) {
+        MongoCollection<Document> avisCollection = getAvisCollection(database);
+
+        for (int avisId : avisIds) {
+            // Supprimer l'avis de la collection Avis
+            avisCollection.deleteOne(new Document("_id", avisId));
+
+            // Mettre à jour la collection Trottinettes en supprimant l'avis de l'array
+            // AvisID
+            MongoCollection<Document> trottinettesCollection = database.getCollection("Trottinettes");
+            Document miseAJourTrottinettes = new Document("$pull", new Document("AvisID", avisId));
+            trottinettesCollection.updateMany(new Document("AvisID", avisId), miseAJourTrottinettes);
+
+            System.out.println("Avis avec l'ID " + avisId + " supprimé avec succès.");
+        }
     }
 }

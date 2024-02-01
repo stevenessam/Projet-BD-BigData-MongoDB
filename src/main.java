@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
 import org.bson.Document;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -85,6 +89,41 @@ public class main {
             // wow.");
             // AvisCRUD.deleteAvis(database, 50);
             // AvisCRUD.readAvis(database, 1);
+            // ----------Fonction-MANY--------
+            // Créer une liste d'avis
+            /*
+             * List<Document> avisList = new ArrayList<>();
+             * avisList.add(new Document("_id", 50).append("ClientID",
+             * 50).append("TrottinetteID", 1).append("MessageAvis",
+             * "Avis 1"));
+             * avisList.add(new Document("_id", 51).append("ClientID",
+             * 51).append("TrottinetteID", 2).append("MessageAvis",
+             * "Avis 2"));
+             * 
+             * // Appeler la fonction pour insérer plusieurs avis
+             * AvisCRUD.insertManyAvis(database, avisList);
+             */
+            // Créer une liste d'avis à mettre à jour
+            /*
+             * List<Document> avisToUpdate = new ArrayList<>();
+             * avisToUpdate.add(new Document("_id", 50).append("ClientID",
+             * 2).append("TrottinetteID", 1)
+             * .append("MessageAvis", "Nouvel Avis 1 test"));
+             * avisToUpdate.add(new Document("_id", 51).append("ClientID",
+             * 3).append("TrottinetteID", 2)
+             * .append("MessageAvis", "Nouvel Avis 2 test"));
+             * 
+             * // Appeler la fonction pour mettre à jour plusieurs avis
+             * AvisCRUD.updateManyAvis(database, avisToUpdate);
+             */
+            // Créer une liste d'IDs d'avis à supprimer
+            /*
+             * List<Integer> avisIdsToDelete = Arrays.asList(50, 51);
+             * 
+             * // Appeler la fonction pour supprimer plusieurs avis
+             * AvisCRUD.deleteManyAvis(database, avisIdsToDelete);
+             */
+
             /*--------------------------------------------------Reservations---------------------------------------------------------*/
             // Création d'un objet Reservation
             /*
