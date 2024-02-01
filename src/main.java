@@ -82,7 +82,6 @@ public class main {
              * 100.0,
              * 0.0,
              * 0.0)
-             * // Ajoutez d'autres clients si nécessaire
              * );
              * 
              * // Appeler la fonction pour insérer plusieurs clients
@@ -157,7 +156,6 @@ public class main {
              * 31, 14, 30)),
              * new Trottinettes(51, 100, true, 40.7128, -74.0060, new Date(2024 - 1900, 0,
              * 31, 14, 30))
-             * // Ajoutez d'autres objets Trottinettes au besoin
              * );
              * 
              * // Appel de la fonction d'update many
@@ -263,7 +261,6 @@ public class main {
              * new Reservations(60, 15, 25, new Date(2024 - 1900, 0, 31, 14, 30), // 31
              * janvier 2024 à 14h30
              * new Date(2024 - 1900, 0, 31, 16, 45), 15.0)
-             * // Ajoutez d'autres objets Reservations au besoin
              * );
              * 
              * // Appel de la méthode insertManyReservations
@@ -334,7 +331,6 @@ public class main {
              * "Paiement de location"),
              * new Transactions(56, 15, 30.0, new Date(2024 - 1900, 0, 31, 14, 30),
              * "Paiement de location")
-             * // Ajoutez d'autres transactions mises à jour si nécessaire
              * );
              * 
              * // Utilisez la fonction updateManyTransactions pour mettre à jour les

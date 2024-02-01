@@ -3,8 +3,6 @@ package CRUDFiles;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 
 import Entites.Trottinettes;
 
@@ -101,8 +99,6 @@ public class TrottinettesCRUD {
             // Supprimez les références dans la collection Reservations
             MongoCollection<Document> reservationsCollection = database.getCollection("Reservations");
             reservationsCollection.deleteMany(new Document("TrottinetteID", trottinettesId));
-
-            // ... Ajoutez d'autres collections si nécessaire
 
             System.out.println("Trottinettes deleted successfully");
         } catch (Exception e) {
@@ -214,7 +210,6 @@ public class TrottinettesCRUD {
                 Document avisFilter = new Document("TrottinetteID", trottinettesId);
                 avisCollection.deleteMany(avisFilter);
 
-                // ... Ajoutez d'autres collections si nécessaire
             }
 
             System.out.println("Multiple Trottinettes deleted successfully");

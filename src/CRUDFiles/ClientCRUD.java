@@ -94,7 +94,7 @@ public class ClientCRUD {
         deleteAssociatedData(database, "Avis", "ClientID", clientId);
         deleteAssociatedData(database, "Reservations", "ClientID", clientId);
         deleteAssociatedData(database, "Transactions", "ClientID", clientId);
-        // Ajoutez d'autres collections si nécessaire
+
     }
 
     private static void deleteAssociatedData(MongoDatabase database, String collectionName, String foreignKey,
@@ -200,7 +200,7 @@ public class ClientCRUD {
                 deleteAssociatedData(database, "Avis", "ClientID", clientId);
                 deleteAssociatedData(database, "Reservations", "ClientID", clientId);
                 deleteAssociatedData(database, "Transactions", "ClientID", clientId);
-                // Ajoutez d'autres collections si nécessaire
+
             }
 
             System.out.println("Clients supprimés avec succès.");
