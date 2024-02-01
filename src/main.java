@@ -16,6 +16,7 @@ import Entites.Client;
 import Entites.Reservations;
 import Entites.Transactions;
 import Entites.Trottinettes;
+import CRUDFiles.AgregationsCRUD;
 import CRUDFiles.AvisCRUD;
 
 public class main {
@@ -347,8 +348,17 @@ public class main {
              */
 
             /*--------------------------------------------------FIN CRUD---------------------------------------------------------*/
+            /*-----------------------------------------------------------------------------------------------------------*/
+            /*--------------------------------------------------AggregationsCRUD---------------------------------------------------------*/
+            // Exemple d'appel de la fonction pour obtenir les avis par ID de client
+            // AgregationsCRUD.getAvisByClientId(database, 2);
+            // mongoClient.close();
+            // Exemple d'appel de la fonction pour compter les transactions par ID de client
+            // AgregationsCRUD.getTransactionCountByClientId(database, 1);
 
-            mongoClient.close();
+            // Exemple d'appel de la fonction pour obtenir les statistiques de réservation
+            // par ID de client
+            // AgregationsCRUD.getClientReservationsInfo(database, 15);
         }
     }
 }
