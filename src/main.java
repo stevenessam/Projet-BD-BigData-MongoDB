@@ -352,13 +352,15 @@ public class main {
             /*--------------------------------------------------AggregationsCRUD---------------------------------------------------------*/
             // Exemple d'appel de la fonction pour obtenir les avis par ID de client
             // AgregationsCRUD.getAvisByClientId(database, 2);
-            // mongoClient.close();
+
             // Exemple d'appel de la fonction pour compter les transactions par ID de client
             // AgregationsCRUD.getTransactionCountByClientId(database, 1);
 
             // Exemple d'appel de la fonction pour obtenir les statistiques de réservation
             // par ID de client
             // AgregationsCRUD.getClientReservationsInfo(database, 15);
+
+            mongoClient.close();
         }
     }
 }
