@@ -3,7 +3,7 @@ package CRUDFiles;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-import DAO.Client;
+import Entites.Client;
 
 import org.bson.Document;
 

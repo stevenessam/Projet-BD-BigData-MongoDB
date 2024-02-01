@@ -1,22 +1,18 @@
 import java.util.Date;
-
 import org.bson.Document;
-
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-
 import CRUDFiles.ClientCRUD;
 import CRUDFiles.ReservationsCRUD;
 import CRUDFiles.TransactionsCRUD;
 import CRUDFiles.TrottinettesCRUD;
+import Entites.Avis;
+import Entites.Client;
+import Entites.Reservations;
+import Entites.Transactions;
+import Entites.Trottinettes;
 import CRUDFiles.AvisCRUD;
-import DAO.Avis;
-import DAO.Client;
-import DAO.Reservations;
-import DAO.Transactions;
-import DAO.Trottinettes;
-import DAO.Avis;
 
 public class main {
 
@@ -81,7 +77,7 @@ public class main {
             // TrottinettesCRUD.readTrottinettes(database, 1);
             /*--------------------------------------------------AVIS---------------------------------------------------------*/
             // Insérer un nouvel avis
-            // AvisCRUD.insertAvis(database, 54, 1, 123, "Un nouveau commentaire sur la
+            // AvisCRUD.insertAvis(database, 55, 1, 123, "Un nouveau commentaire sur la
             // trottinette.");
 
             // Mettre à jour un avis (par exemple, l'avis avec l'ID 1)

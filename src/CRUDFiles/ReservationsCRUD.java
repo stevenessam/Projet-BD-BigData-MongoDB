@@ -3,7 +3,7 @@ package CRUDFiles;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
-import DAO.Reservations;
+import Entites.Reservations;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
