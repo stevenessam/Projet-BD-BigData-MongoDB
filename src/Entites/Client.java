@@ -1,5 +1,8 @@
 package Entites;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bson.Document;
 
 public class Client {
@@ -102,5 +105,9 @@ public class Client {
                 .append("DerniereLocalisation", new Document("longitude", longitude).append("latitude", latitude));
     }
 
-    // Getters et setters si nécessaire
+    // Méthode statique pour convertir une liste d'objets Client en une liste de
+    // documents Document
+    public static List<Document> toDocuments(List<Client> clients) {
+        return clients.stream().map(Client::toDocument).collect(Collectors.toList());
+    }
 }

@@ -101,6 +101,28 @@ public class AvisCRUD {
         System.out.println("Avis insérés avec succès.");
     }
 
+    public static void readAllAvis(MongoDatabase database) {
+        try {
+            // Obtenez la collection Avis
+            MongoCollection<Document> avisCollection = database.getCollection("Avis");
+
+            // Récupérez tous les avis de la collection
+            FindIterable<Document> result = avisCollection.find();
+
+            // Affichez les détails de chaque avis
+            System.out.println("Liste des avis :");
+            for (Document avis : result) {
+                System.out.println("ID : " + avis.getInteger("_id"));
+                System.out.println("ClientID : " + avis.getInteger("ClientID"));
+                System.out.println("TrottinetteID : " + avis.getInteger("TrottinetteID"));
+                System.out.println("MessageAvis : " + avis.getString("MessageAvis"));
+                System.out.println("------------------------");
+            }
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
     // Méthode pour mettre à jour plusieurs avis dans la collection Avis
     public static void updateManyAvis(MongoDatabase database, List<Document> avisList) {
         MongoCollection<Document> avisCollection = getAvisCollection(database);

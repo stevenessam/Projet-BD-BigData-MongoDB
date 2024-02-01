@@ -60,7 +60,60 @@ public class main {
             // ClientCRUD.readClient(database, 1);
 
             // ClientCRUD.deleteClient(database, 5);
-            /*-------------------------------------------Trottinettes----------------------------------------------------------------*/
+
+            // ---------------------------------Fonction-MANY-------------------
+            // Créer une liste d'objets Client à insérer
+            /*
+             * List<Client> clientsToInsert = Arrays.asList(
+             * new Client(
+             * 50,
+             * "NomClient",
+             * "PrenomClient",
+             * "client@example.com",
+             * "0600000000",
+             * 100.0,
+             * 0.0,
+             * 0.0),
+             * new Client(51,
+             * "NomClient",
+             * "PrenomClient",
+             * "client@example.com",
+             * "0600000000",
+             * 100.0,
+             * 0.0,
+             * 0.0)
+             * // Ajoutez d'autres clients si nécessaire
+             * );
+             * 
+             * // Appeler la fonction pour insérer plusieurs clients
+             * ClientCRUD.insertManyClients(database, clientsToInsert);
+             */
+
+            // Exemple d'insertion de clients
+            /*
+             * List<Client> clientsToUpdate = new ArrayList<>();
+             * clientsToUpdate.add(new Client(50, "test", "NouveauPrenom1",
+             * "nouveau1@example.com", "123456789",
+             * 150.0, -73.567, 444));
+             * clientsToUpdate.add(new Client(51, "test", "NouveauPrenom2",
+             * "nouveau2@example.com", "987654321",
+             * 200.0, -74.567, 4444));
+             * 
+             * // Appel de la méthode updateManyClients
+             * ClientCRUD.updateManyClients(database, clientsToUpdate);
+             */
+            // Exemple de suppression de plusieurs clients par leurs IDs
+            /*
+             * List<Integer> clientIdsToDelete = Arrays.asList(7, 6);
+             * 
+             * // Appel de la méthode deleteManyClients
+             * ClientCRUD.deleteManyClients(database, clientIdsToDelete);
+             */
+            // Read all clients
+            // ClientCRUD.readAllClients(database);
+            /*-------------------------------------------Trottinettes--------------------
+            * --------------------------------------------
+            */
 
             // Créez un objet Trottinettes
             // Trottinettes trottinettes = new Trottinettes(21, 80, true, -0.05, 0.05,
@@ -89,7 +142,7 @@ public class main {
             // wow.");
             // AvisCRUD.deleteAvis(database, 50);
             // AvisCRUD.readAvis(database, 1);
-            // ----------Fonction-MANY--------
+            // ----------Fonction-MANY--------------------------------------------------------------------
             // Créer une liste d'avis
             /*
              * List<Document> avisList = new ArrayList<>();
@@ -123,22 +176,23 @@ public class main {
              * // Appeler la fonction pour supprimer plusieurs avis
              * AvisCRUD.deleteManyAvis(database, avisIdsToDelete);
              */
+            // Appel de la méthode readAllAvis
+            // AvisCRUD.readAllAvis(database);
 
             /*--------------------------------------------------Reservations---------------------------------------------------------*/
             // Création d'un objet Reservation
-            /*
-             * Reservations reservation = new Reservations(
-             * 11, // Remplacez par l'ID approprié
-             * 10, // Exemple de ClientID
-             * 10, // Exemple de TrottinetteID
-             * "2024-01-27T12:00:00", // Exemple de DateHeureDebut
-             * "2024-01-27T14:00:00", // Exemple de DateHeureFin
-             * 20.50 // Exemple de Tarif
-             * );
-             * 
-             * // Insertion de la réservation dans la base de données
-             * ReservationsCRUD.insertReservation(database, reservation);
-             */
+
+            Reservations reservation = new Reservations(
+                    56, // Remplacez par l'ID approprié
+                    10, // Exemple de ClientID
+                    10, // Exemple de TrottinetteID
+                    new Date(2024 - 1900, 0, 31, 14, 30), // 31 janvier 2024 à 14h30
+                    new Date(2024 - 1900, 0, 31, 16, 45),
+                    20.50 // Exemple de Tarif
+            );
+
+            // Insertion de la réservation dans la base de données
+            ReservationsCRUD.insertReservation(database, reservation);
 
             // Création d'un objet Reservation avec les nouvelles valeurs
             /*
@@ -159,6 +213,51 @@ public class main {
             // Close the MongoDB connection
             // read
             // ReservationsCRUD.readReservation(database, 2);
+            // --------------------------------------------------Fonction-MANY-------------------------------------
+
+            // Créez une liste d'objets Reservations pour tester l'insertion multiple
+            /*
+             * List<Reservations> reservationsList = Arrays.asList(
+             * new Reservations(59, 10, 20, new Date(2024 - 1900, 0, 31, 14, 30), // 31
+             * janvier 2024 à 14h30
+             * new Date(2024 - 1900, 0, 31, 16, 45), 10.0),
+             * new Reservations(60, 15, 25, new Date(2024 - 1900, 0, 31, 14, 30), // 31
+             * janvier 2024 à 14h30
+             * new Date(2024 - 1900, 0, 31, 16, 45), 15.0)
+             * // Ajoutez d'autres objets Reservations au besoin
+             * );
+             * 
+             * // Appel de la méthode insertManyReservations
+             * ReservationsCRUD.insertManyReservations(database, reservationsList);
+             */
+
+            // Créez une liste de réservations à mettre à jour
+            /*
+             * List<Reservations> reservationsToUpdate = new ArrayList<>();
+             * 
+             * // Ajoutez des réservations à la liste (assurez-vous que les ID correspondent
+             * // aux réservations existantes)
+             * reservationsToUpdate.add(
+             * new Reservations(59, 100, 100, new Date(2024 - 1900, 0, 31, 14, 30),
+             * new Date(2024 - 1900, 0, 31, 14, 30), 222));
+             * reservationsToUpdate.add(new Reservations(60, 150, 120, new Date(2024 - 1900,
+             * 0, 31, 14, 30),
+             * new Date(2024 - 1900, 0, 31, 14, 30), 225));
+             * 
+             * // Appelez la méthode updateManyReservations pour mettre à jour les
+             * réservations
+             * ReservationsCRUD.updateManyReservations(database, reservationsToUpdate);
+             */
+            // Créez une liste d'IDs de réservations à supprimer
+            /*
+             * List<Integer> reservationsToDelete = Arrays.asList(60, 59, 58); // Remplacez
+             * par les IDs appropriés
+             * 
+             * // Appelez la méthode deleteManyReservations pour supprimer les réservations
+             * ReservationsCRUD.deleteManyReservations(database, reservationsToDelete);
+             */
+            // Appel de la méthode readAllReservations
+            // ReservationsCRUD.readAllReservations(database);
 
             /*--------------------------------------------------Transactions---------------------------------------------------------*/
             // Exemple d'insertion d'une transaction

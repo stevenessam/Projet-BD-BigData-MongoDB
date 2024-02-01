@@ -1,5 +1,9 @@
 package Entites;
 
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.bson.Document;
 
 public class Reservations {
@@ -7,12 +11,12 @@ public class Reservations {
     private int _id;
     private int clientID;
     private int trottinetteID;
-    private String dateHeureDebut;
-    private String dateHeureFin;
+    private Date dateHeureDebut; // Correction ici
+    private Date dateHeureFin;
     private double tarif;
 
     // Constructeur
-    public Reservations(int _id, int clientID, int trottinetteID, String dateHeureDebut, String dateHeureFin,
+    public Reservations(int _id, int clientID, int trottinetteID, Date dateHeureDebut, Date dateHeureFin,
             double tarif) {
         this._id = _id;
         this.clientID = clientID;
@@ -46,19 +50,19 @@ public class Reservations {
         this.trottinetteID = trottinetteID;
     }
 
-    public String getDateHeureDebut() {
+    public Date getDateHeureDebut() {
         return dateHeureDebut;
     }
 
-    public void setDateHeureDebut(String dateHeureDebut) {
+    public void setDateHeureDebut(Date dateHeureDebut) {
         this.dateHeureDebut = dateHeureDebut;
     }
 
-    public String getDateHeureFin() {
+    public Date getDateHeureFin() {
         return dateHeureFin;
     }
 
-    public void setDateHeureFin(String dateHeureFin) {
+    public void setDateHeureFin(Date dateHeureFin) {
         this.dateHeureFin = dateHeureFin;
     }
 
@@ -80,6 +84,12 @@ public class Reservations {
                 .append("Tarif", tarif);
     }
 
-    // Autres getters et setters au besoin
+    // Méthode pour convertir une liste d'objets Reservations en une liste de
+    // documents MongoDB
+    public static List<Document> toDocumentList(List<Reservations> reservationsList) {
+        return reservationsList.stream()
+                .map(Reservations::toDocument)
+                .collect(Collectors.toList());
+    }
 
 }
