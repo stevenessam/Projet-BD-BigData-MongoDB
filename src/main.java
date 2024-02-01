@@ -124,7 +124,7 @@ public class main {
             // Créez un objet Trottinettes avec les nouvelles valeurs
             /*
              * Trottinettes updatedTrottinettes = new Trottinettes(21, 90, false, 0.05,
-             * -0.05, "2024-01-30T12:00:00Z");
+             * -0.05, new Date(2024 - 1900, 0, 31, 14, 30));
              * 
              * // Mettez à jour l'objet Trottinettes dans la base de données
              * TrottinettesCRUD.updateTrottinettes(database, updatedTrottinettes);
@@ -239,8 +239,8 @@ public class main {
              * 11, // ID de la réservation à mettre à jour
              * 789, // Nouvelle valeur de ClientID
              * 987, // Nouvelle valeur de TrottinetteID
-             * "2024-01-27T15:00:00", // Nouvelle valeur de DateHeureDebut
-             * "2024-01-27T17:00:00", // Nouvelle valeur de DateHeureFin
+             * new Date(2024 - 1900, 0, 31, 14, 30), // Nouvelle valeur de DateHeureDebut
+             * new Date(2024 - 1900, 0, 31, 15, 30), // Nouvelle valeur de DateHeureFin
              * 25.75 // Nouvelle valeur de Tarif
              * );
              * 
