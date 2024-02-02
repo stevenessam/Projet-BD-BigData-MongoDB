@@ -56,6 +56,25 @@ public class ClientCRUD {
         }
     }
 
+    // Function to search for clients by name
+    public static void searchClientsByName(MongoDatabase database, String nom) {
+
+        MongoCollection<Document> clientsCollection = database.getCollection("Clients");
+
+        System.out.println("\nSearching for clients with the name: " + nom);
+
+        // Creating a query to find documents with the specified name
+        Document query = new Document("Nom", nom);
+
+        // Executing the find query
+        FindIterable<Document> result = clientsCollection.find(query);
+
+        // Displaying the results
+        for (Document document : result) {
+            System.out.println(document.toJson());
+        }
+    }
+
     public static void updateClient(MongoDatabase database, int clientId, String nom, String prenom, String email,
             String telephone, double soldeCompte, double longitude, double latitude) {
         try {

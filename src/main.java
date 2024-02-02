@@ -5,8 +5,11 @@ import java.util.List;
 
 import org.bson.Document;
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Sorts;
+
 import CRUDFiles.ClientCRUD;
 import CRUDFiles.ReservationsCRUD;
 import CRUDFiles.TransactionsCRUD;
@@ -59,6 +62,7 @@ public class main {
 
             // Appeler la fonction readClient avec l'ID du client que vous souhaitez lire
             // ClientCRUD.readClient(database, 1);
+            // ClientCRUD.searchClientsByName(database, "Duncan");
 
             // ClientCRUD.deleteClient(database, 5);
 
@@ -418,6 +422,15 @@ public class main {
              * .append("moyenMontantTousTransactions", new Document("$avg", "$Montant")),
              * database);
              */
+
+            // Example: Creating an index for the "Clients" collection
+            /*
+             * AgregationsCRUD.createClientIndexes("Clients", "idx_Clients_Nom",
+             * "Nom", true, false, database);
+             */
+            // Example: Get all indexes of the "Clients" collection
+            // AgregationsCRUD.getAllIndexesOfACollection("Clients", database);
+            // ClientCRUD.searchClientsByName(database, "Duncan");
 
             mongoClient.close();
         }

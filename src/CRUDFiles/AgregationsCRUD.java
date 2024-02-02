@@ -2,11 +2,13 @@ package CRUDFiles;
 
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.ListIndexesIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.IndexOptions;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -157,6 +159,41 @@ public class AgregationsCRUD {
                 .println("\n\n\n*********** Group By Operation on " + collectionName + " Collection *****************");
         for (Document document : output) {
             System.out.println(document);
+        }
+    }
+
+    public static void createClientIndexes(
+            String localCollectionName,
+            String indexName,
+            String fieldName,
+            boolean isAscendingIndex,
+            boolean indexUnique,
+            MongoDatabase database) {
+        System.out.println("\n\n\n*********** Creating Indexes *****************");
+        MongoCollection<Document> collection = database.getCollection(localCollectionName);
+        IndexOptions indexOptions = new IndexOptions();
+
+        if (indexName != null)
+            indexOptions.unique(indexUnique).name(indexName);
+        else
+            indexOptions.unique(indexUnique);
+
+        if (isAscendingIndex)
+            collection.createIndex(new Document(fieldName, 1), indexOptions);
+        else
+            collection.createIndex(new Document(fieldName, -1), indexOptions);
+
+        System.out.println("Index created successfully.");
+    }
+
+    public static void getAllIndexesOfACollection(String localCollectionName, MongoDatabase database) {
+        System.out.println("\n\n\n*********** Get All Indexes of a Collection *****************");
+        MongoCollection<Document> collection = database.getCollection(localCollectionName);
+        ListIndexesIterable<Document> indexIterable = collection.listIndexes();
+        Iterator<Document> iterator = indexIterable.iterator();
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
     }
 }
