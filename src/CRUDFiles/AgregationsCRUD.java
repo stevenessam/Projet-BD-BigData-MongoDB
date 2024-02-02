@@ -1,6 +1,8 @@
 package CRUDFiles;
 
 import com.mongodb.client.AggregateIterable;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
@@ -10,6 +12,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class AgregationsCRUD {
 
@@ -86,6 +89,31 @@ public class AgregationsCRUD {
                 System.out.println("Email: " + document.getString("Email"));
                 System.out.println("Nombre de réservations : " + document.getInteger("ReservationCount"));
                 System.out.println("Tarif total : " + document.getDouble("TotalTarif"));
+            }
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void searchClientsConditionnelle(String collectionName, Document filter, Document sort,
+            Document projection,
+            MongoDatabase database) {
+        System.out.println("\n\n\n*********** in searchClients *****************");
+
+        try {
+            // Get the Clients collection
+            MongoCollection<Document> collection = database.getCollection(collectionName);
+
+            // Create the query
+            FindIterable<Document> clientList = collection
+                    .find(filter)
+                    .sort(sort)
+                    .projection(projection);
+
+            // Getting the iterator
+            Iterator it = clientList.iterator();
+            while (it.hasNext()) {
+                System.out.println(it.next());
             }
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());

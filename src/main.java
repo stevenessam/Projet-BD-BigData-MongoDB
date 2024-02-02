@@ -360,7 +360,32 @@ public class main {
             // par ID de client
             // AgregationsCRUD.getClientReservationsInfo(database, 15);
 
+            // -----filter, sort, and projection----------------------------------
+            // Example filter, sort, and projection documents
+            /*
+             * AgregationsCRUD.searchClientsConditionnelle("Clients",
+             * new Document(),
+             * new Document("_id", 1),
+             * new Document("Nom", 1).append("Prenom", 1).append("Email", 1),
+             * database);
+             */
+
+            // Example filter, sort, and projection documents using $or
+
+            /*
+             * AgregationsCRUD.searchClientsConditionnelle("Clients",
+             * new Document("$or", List.of(
+             * new Document("Nom", "Martin"),
+             * new Document("Nom", "Duncan"))),
+             * new Document("Prenom", 1),
+             * new Document("Nom", 1).append("Prenom", 1).append("Email", 1),
+             * database);
+             */
+
+            // ----Fin-filter, sort, and projection----------------------------------
+
             mongoClient.close();
         }
+
     }
 }
