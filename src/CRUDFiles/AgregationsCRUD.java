@@ -119,4 +119,26 @@ public class AgregationsCRUD {
             System.err.println("Error: " + e.getMessage());
         }
     }
+
+    public static void joinCollection1EtCollection2(
+            String localCollectionName,
+            String foreignCollectionName,
+            String localColJoinFieldName,
+            String foreigColJoinFieldName,
+            Document filterFieldsOnLocalCollection,
+            String namedJoinedElements,
+            MongoDatabase database) {
+        AggregateIterable<Document> outputColl;
+        MongoCollection<Document> joinColl = database.getCollection(localCollectionName);
+        System.out.println("\n\n\n****************************");
+
+        outputColl = joinColl.aggregate(Arrays.asList(
+                Aggregates.match(filterFieldsOnLocalCollection),
+                Aggregates.lookup(foreignCollectionName, localColJoinFieldName, foreigColJoinFieldName,
+                        namedJoinedElements)));
+
+        for (Document colDoc : outputColl) {
+            System.out.println(colDoc);
+        }
+    }
 }

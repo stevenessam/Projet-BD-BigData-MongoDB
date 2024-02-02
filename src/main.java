@@ -384,6 +384,21 @@ public class main {
 
             // ----Fin-filter, sort, and projection----------------------------------
 
+            // Call the joinCollection1EtCollection2 join Clients et Avis function
+            /*
+             * AgregationsCRUD.joinCollection1EtCollection2("Clients", "Avis",
+             * "_id", "ClientID", new Document("_id", 1), "joined",
+             * database);
+             */
+
+            // Call the joinCollection1EtCollection2 join Trottinettes et Reservations
+            // function
+            /*
+             * AgregationsCRUD.joinCollection1EtCollection2("Trottinettes", "Reservations",
+             * "_id", "TrottinetteID", new Document("_id", 1), "joined",
+             * database);
+             */
+
             mongoClient.close();
         }
 
