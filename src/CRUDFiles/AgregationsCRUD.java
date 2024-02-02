@@ -141,4 +141,22 @@ public class AgregationsCRUD {
             System.out.println(colDoc);
         }
     }
+
+    // Group By Operation
+    public static void groupBy(
+            String collectionName,
+            String groupOperator,
+            Document groupFields,
+            MongoDatabase database) {
+        MongoCollection<Document> collection = database.getCollection(collectionName);
+        Document groupStage = new Document(groupOperator, groupFields);
+
+        AggregateIterable<Document> output = collection.aggregate(Arrays.asList(groupStage));
+
+        System.out
+                .println("\n\n\n*********** Group By Operation on " + collectionName + " Collection *****************");
+        for (Document document : output) {
+            System.out.println(document);
+        }
+    }
 }

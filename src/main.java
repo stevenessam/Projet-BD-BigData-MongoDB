@@ -399,6 +399,26 @@ public class main {
              * database);
              */
 
+            // Example group by operation on the "Clients" collection
+            // Call the groupBy function
+            /*
+             * AgregationsCRUD.groupBy("Reservations", "$group",
+             * new Document("_id", "$ClientID")
+             * .append("totalReservations", new Document("$count", new Document()))
+             * .append("totalTarif", new Document("$sum", "$Tarif")),
+             * database);
+             */
+
+            // Call the groupBy function
+            /*
+             * AgregationsCRUD.groupBy("Transactions", "$group",
+             * new Document("_id", "$ClientID")
+             * .append("totalTransactions", new Document("$count", new Document()))
+             * .append("totalMontantTousTransactions", new Document("$sum", "$Montant"))
+             * .append("moyenMontantTousTransactions", new Document("$avg", "$Montant")),
+             * database);
+             */
+
             mongoClient.close();
         }
 
