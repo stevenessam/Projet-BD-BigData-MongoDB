@@ -428,6 +428,7 @@ public class main {
              * AgregationsCRUD.createClientIndexes("Clients", "idx_Clients_Nom",
              * "Nom", true, false, database);
              */
+
             // Example: Get all indexes of the "Clients" collection
             // AgregationsCRUD.getAllIndexesOfACollection("Clients", database);
             // ClientCRUD.searchClientsByName(database, "Duncan");
