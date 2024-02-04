@@ -70,7 +70,7 @@ public class main {
             /* Supprimer un client avec son ID */
             // ClientCRUD.deleteClient(database, 5);
 
-            // ---------------------------------Fonction-MANY--------------------------------------
+            // ---------------------------------Fonction-MANY---------------------------------------------
             /* Créer une liste d'objets Client à insérer */
             // List<Client> clientsToInsert = Arrays.asList(
             // new Client(
@@ -175,7 +175,7 @@ public class main {
             // AvisCRUD.updateAvis(database, 53, 2, 26, "Nouveau commentaire mis à jour.");
             // AvisCRUD.deleteAvis(database, 50);
             // AvisCRUD.readAvis(database, 1);
-            // ----------Fonction-MANY--------------------------------------------------------------------
+            // ---------------------------------Fonction-MANY---------------------------------------------
             /* Créer une liste d'avis */
             // List<Document> avisList = new ArrayList<>();
             // avisList.add(new Document("_id", 50).append("ClientID",
@@ -241,7 +241,8 @@ public class main {
 
             /* read Reservation by id */
             // ReservationsCRUD.readReservation(database, 2);
-            // --------------------------------------------------Fonction-MANY-------------------------------------
+
+            // ---------------------------------Fonction-MANY---------------------------------------------
 
             /* Créez une liste d'objets Reservations pour tester l'insertion multiple */
             // List<Reservations> reservationsList = Arrays.asList(
@@ -256,7 +257,7 @@ public class main {
             // ReservationsCRUD.insertManyReservations(database, reservationsList);
 
             /* Créez une liste de réservations à mettre à jour */
-            List<Reservations> reservationsToUpdate = new ArrayList<>();
+            // List<Reservations> reservationsToUpdate = new ArrayList<>();
 
             /*
              * Ajoutez des réservations à la liste (assurez-vous que les ID correspondent
@@ -298,7 +299,7 @@ public class main {
 
             /* Appel de la fonction de suppression */
             // TransactionsCRUD.deleteTransaction(database, 20);
-            // --------------------------------------------------Fonction-MANY-------------------------------------
+            // ---------------------------------Fonction-MANY---------------------------------------------
             /* Exemple de liste de transactions à insérer */
             // List<Transactions> transactionsList = new ArrayList<>();
             // transactionsList
