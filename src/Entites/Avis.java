@@ -32,6 +32,22 @@ public class Avis {
         return messageAvis;
     }
 
+    public void set_id(int _id) {
+        this._id = _id;
+    }
+
+    public void setClientID(int clientID) {
+        this.clientID = clientID;
+    }
+
+    public void setTrottinetteID(int trottinetteID) {
+        this.trottinetteID = trottinetteID;
+    }
+
+    public void setMessageAvis(String messageAvis) {
+        this.messageAvis = messageAvis;
+    }
+
     // Convertir l'objet Avis en Document MongoDB
     public Document toDocument() {
         Document document = new Document("_id", _id)
