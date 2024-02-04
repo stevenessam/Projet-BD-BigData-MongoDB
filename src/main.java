@@ -23,7 +23,6 @@ import CRUDFiles.AgregationsCRUD;
 import CRUDFiles.AvisCRUD;
 
 public class main {
-
     public static void main(String[] args) {
         // Connect to MongoDB
         MongoClient mongoClient = ConnectToDB.connectToMongoDB();
@@ -411,7 +410,10 @@ public class main {
             /* Example: Get all indexes of the "Clients" collection */
             // AgregationsCRUD.getAllIndexesOfACollection("Clients", database);
 
-            /* rechercher un client avec son nom */
+            /*
+             * rechercher un client avec son nom ,changer le nom par un nom existant dans la
+             * BD
+             */
             // ClientCRUD.searchClientsByName(database, "Duncan");
 
             // Close the connection to MongoDB
